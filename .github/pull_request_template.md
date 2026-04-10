@@ -5,4 +5,6 @@
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
+- [ ] Refactor
+- [ ] Chore
 - [ ] Documentation update
