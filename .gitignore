@@ -18,8 +18,8 @@ transform/dbt_packages/
 transform/logs/
 
 # Raw data layer
-!data/.gitkeep
 data/**
+!data/.gitkeep
 
 # Duckdb warehouse
 warehouse/*.duckdb
