@@ -1,0 +1,13 @@
+gaming_trends:
+  outputs:
+    dev:
+      type: duckdb
+      path: warehouse/dev.duckdb
+      threads: 1
+
+    prod:
+      type: duckdb
+      path: warehouse/prod.duckdb
+      threads: 4
+
+  target: dev

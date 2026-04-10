@@ -8,3 +8,18 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Environment variables
+.env
+
+# dbt
+transform/target/
+transform/dbt_packages/
+transform/logs/
+
+# Raw data layer
+!data/.gitkeep
+data/**
+
+# Duckdb warehouse
+warehouse/*.duckdb
