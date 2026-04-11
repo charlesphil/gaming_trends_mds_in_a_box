@@ -30,6 +30,11 @@ jobs:
           mkdir -p ~/.dbt
           cp profiles.yml.example ~/.dbt/profiles.yml
 
+      - name: Run dbt deps
+        run: uv run dbt deps
+        env:
+          DBT_PROJECT_DIR: transform
+
       - name: Run dbt compile
         run: uv run dbt compile
         env:
