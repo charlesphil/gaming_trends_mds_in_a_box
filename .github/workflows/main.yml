@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dbt-compile:
+    name: Check if dbt project compiles
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Create dbt profiles
+        run: |
+          mkdir -p ~/.dbt
+          cp profiles.yml.example ~/.dbt/profiles.yml
+
+      - name: Run dbt compile
+        run: uv run dbt compile
+        env:
+          DBT_PROJECT_DIR: transform
