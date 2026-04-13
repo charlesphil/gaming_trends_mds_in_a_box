@@ -14,7 +14,8 @@ jobs:
   dbt-compile:
     name: Check if dbt project compiles
     runs-on: ubuntu-latest
-
+    env:
+      DBT_PROJECT_DIR: transform
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -32,10 +33,6 @@ jobs:
 
       - name: Run dbt deps
         run: uv run dbt deps
-        env:
-          DBT_PROJECT_DIR: transform
 
       - name: Run dbt compile
         run: uv run dbt compile
-        env:
-          DBT_PROJECT_DIR: transform
